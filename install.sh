@@ -57,6 +57,8 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
         # Neovim
         zathura                         # PDF viewer
+        zathura-djvu                    # djvu zathura support
+        zathura-pdf-mupdf               # pdg zathura support
         fzf                             # fuzzy finder
         ripgrep                         # better grep
         lua-language-server             # lua lsp
@@ -155,8 +157,12 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     yay -S --needed --noconfirm "${aur_packages[@]}"
 
 
-    echo -e "Changing to zsh...\n"
-    chsh -s /bin/zsh
+    if [[ "$SHELL" != "/bin/zsh" ]]; then
+        echo -e "Changing default shell to zsh...\n"
+        chsh -s /bin/zsh
+    else
+        echo -e "Default shell is already zsh. Skipping chsh...\n"
+    fi
     # Oh-my-zsh setup here
 
 
