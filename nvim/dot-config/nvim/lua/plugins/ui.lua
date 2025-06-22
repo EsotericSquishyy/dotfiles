@@ -77,6 +77,7 @@ return {
         exclude_groups = {},
         on_clear = function() end,
       }
+      -- :TransparentEnable
     end,
   },
 
