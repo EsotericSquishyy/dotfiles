@@ -81,6 +81,17 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         slurp                           # screen geometry
         grim                            # image grabber
 
+        # System utils
+        pipewire                        # audio
+        pipewire-audio                  # audio
+        pipewire-pulse                  # audio
+        pipewire-alsa                   # audio
+        wireplumber                     # audio
+        wl-clipboard                    # clipboard
+        bind                            # network stuff
+        bluez                           # bluetooth
+        bluez-utils                     # bluetooth
+
         # General
         chromium                        # browser
         discord                         # messaging
@@ -91,7 +102,6 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         nodejs                          # javascript
         gcc                             # libc
         dunst                           # notification daemon
-        wl-clipboard                    # clipboard
         vlc                             # video player
         zip                             # archive tool
         unzip                           # archive tool
@@ -102,7 +112,6 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         bottom                          # better top
         sagemath                        # calculator
         imagemagick                     # image converter
-        bind                            # network stuff
         nmap                            # network listener
         socat                           # network listener
         file                            # file inspection
@@ -110,14 +119,12 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         tree                            # file tree
         wget                            # HTTP requests
         glow                            # terminal MD renderer
-        # pulseaudio                      # sound
-        pipewire                        # sound
         strace                          # stack trace
         ltrace                          # stack trace
         typst                           # typsetting language
         zsh                             # shell
-        bluez                           # bluetooth
-        bluez-utils                     # bluetooth
+        zsh-syntax-highlighting         # syntax highlighting for zsh
+        starship                        # prompt manager
         openvpn                         # vpn
         jellyfin-ffmpeg                 # media converter
         obsidian                        # notes
@@ -149,7 +156,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
 
     echo -e "Changing to zsh...\n"
-    sudo chsh -s /bin/zsh "$(logname)"
+    chsh -s /bin/zsh
     # Oh-my-zsh setup here
 
 
@@ -158,6 +165,12 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
         git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
     fi
+
+
+    echo -e "Starting the Sound Services...\n"
+    # sudo systemctl enable --now pipewire pipewire-pulse wireplumber
+    systemctl --user enable --now pipewire pipewire-pulse wireplumber
+    sleep 2
 
 
     echo -e "Starting the Bluetooth Service...\n"
@@ -188,7 +201,7 @@ fi
 read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
     echo -e "Copying config files...\n"
-    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty
+    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty starship
     sudo stow --dotfiles -t "/" greetd keyd
 fi
 
