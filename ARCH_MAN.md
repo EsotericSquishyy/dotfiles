@@ -13,6 +13,7 @@ Post-Install:
 2. Setup ssh-key for github and clone dotfiles
 3. Install all necessary packages (see below) using dotfiles
 4. Update config files using dotfiles
+5. Remap keys (https://www.reddit.com/r/vim/comments/j4e7b8/remapping_capslock_to_esc_when_tapped_and_ctrl/)
 
 Packages (nvim):
 - `nvim`
@@ -21,54 +22,59 @@ Packages (nvim):
 - `ripgrep`             (better grep)
 - `lua-language-server` (lua lsp)
 - `clang`               (c lsp)
-- `gnumake`             (make)
+- `make`                (make)
 - `tinymist`            (typst lsp)
 
 Packages (hyprland):
-- `hyprland`, `alacritty`, `firefox`
+- `hyprland`,`alacritty`,`firefox`
 - `swww`                (wallpaper daemon)
 - `waybar`              (status bar)
-- `xfce.thunar`         (file viewer)
-- `also-utils`          (sounds)
+- `thunar`              (file viewer)
+- `alsa-utils`          (sounds)
 - `brightnessctl`       (brightness)
 - `rofi-wayland`        (app launcher)
 - `wlogout`             (logout)
-- `slup`                (region selector)
+- `slurp`               (region selector)
 - `grim`                (image grabber)
 
 Packages (general):
-- `ungoogled-chromium`  (browser)
+- `chromium`            (browser)
 - `whatsapp-for-linux`  (messaging)
 - `discord`             (messaging)
 - `inkscape`            (svg editor)
 - `obs-studio`          (recorder)
-- `godot_4`             (game engine)
+- `godot`               (game engine)
 - `lazygit`             (git tui)
-- `nodejs_24`           (node)
-- `libgcc`              (libc)
+- `nodejs`              (node)
+- `gcc`                 (libc)
 - `neofetch`            (fetch)
 - `dunst`               (notification daemon)
 - `wl-clipboard`        (system clipboard)
 - `vlc`                 (media player)
 - `qview`               (image viewer)
-- `zip`, `unzip`, `7z`  (archives)
+- `zip`,`unzip`,`7zip`  (archives)
 - `eza`                 (better `ls`)
 - `zoxide`              (better `cd`)
 - `bat`                 (better `cat`)
 - `bottom`              (better `top`)
 - `sage`                (calculator)
 - `imagemagick`         (image converter)
-- `dig`                 (network digging)
-- `nmap`, `socat`       (network listening)
+- `bind`                (network stuff)
+- `nmap`,`socat`        (network listening)
 - `file`                (file inspector)
 - `which`               (binary locator)
 - `tree`                (file tree visualizer)
 - `wget`                (HTTP requester)
 - `glow`                (markdown viewer)
 - `pulseaudio`          (audio)
-- `strace`, `ltrace`    (call monitoring)
+- `pipewire`            (audio)
+- `strace`,`ltrace`     (call monitoring)
 - `typst`               (typst)
 - `zsh`                 (shell)
+- `tmux`                (terminal multiplexer)
+- `starship`            (terminal prompt)
+- `nix`                 (nix)
+- `bluez`,`bluez-utils` (bluetooth)
 
 Packages (fonts):
 - `font-awesome`
@@ -80,8 +86,6 @@ Packages (fonts):
 Packages (extra):
 - `openvpn`             (vpn)
 - `jellyfin-ffmped`     (file converter/video player)
-- `usbimager`           (iso imager)
 - `obsidian`            (notes)
 - `ghc`                 (haskell)
-- `lean4`               (lean)
 
