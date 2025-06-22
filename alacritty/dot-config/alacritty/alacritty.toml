@@ -1,0 +1,69 @@
+# Alacritty Configuration
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 15.0
+
+[font.normal]
+family = "Mononoki Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "Mononoki Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "Mononoki Nerd Font"
+style = "Italic"
+
+[font.bold_italic]
+family = "Mononoki Nerd Font"
+style = "Bold Italic"
+
+[scrolling]
+multiplier = 5
+
+[selection]
+save_to_clipboard = true
+
+[window]
+opacity = 0.8
+decorations = "None"
+
+[window.padding]
+x = 10
+y = 10
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+foreground = "0xf1efee" # base07
+background = "0x1b1918" # base00
+
+[colors.normal]
+black   = "0x1b1918" # base00
+red     = "0xf22c40" # base0D
+green   = "0x7b9726" # base0C
+yellow  = "0xc38418" # base0B
+blue    = "0x407ee7" # base0E
+magenta = "0x6666ea" # base08
+cyan    = "0x3d97b8" # base06
+white   = "0xe6e2e0" # base09
+
+[colors.bright]
+black   = "0x1b1918" # base00
+red     = "0xf22c40" # base0D
+green   = "0x7b9726" # base0C
+yellow  = "0xdf5320" # base0B
+blue    = "0x407ee7" # base0E
+magenta = "0x6666ea" # base08
+cyan    = "0x3d97b8" # base06
+white   = "0xe6e2e0" # base0A
+
+[colors.cursor]
+cursor = "0xe6e2e0" # base06
+text   = "0xe6e2e0" # base06
+

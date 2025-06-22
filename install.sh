@@ -22,6 +22,15 @@ if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
     sleep 3
 fi
 
+
+# -----Package manager update-----
+read -n1 -rep 'Would you like to update packages? (y,n)' UPDT
+if [[ $UPDT == "Y" || $UPDT == "y" ]]; then
+    sudo pacman -Syu --noconfirm
+    yay -Syu --noconfirm
+fi
+
+
 # -----Install all of the above pacakges-----
 read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
@@ -42,86 +51,85 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         # networkmanager
 
         # Fundamentals
-        firefox 
-        hyprland
-        alacritty
+        firefox                         # browser
+        hyprland                        # Wayland compositor
+        alacritty                       # terminal emulator
 
         # Neovim
-        zathura
-        fzf
-        ripgrep
-        lua-language-server
-        clang
-        make
-        tinymist
+        zathura                         # PDF viewer
+        fzf                             # fuzzy finder
+        ripgrep                         # better grep
+        lua-language-server             # lua lsp
+        clang                           # c lsp
+        make                            # make
+        tinymist                        # typst lsp
 
         # Hyprland
-        greetd
-        greetd-tuigreet
-        xdg-desktop-portal-hyprland
-        polkit
-        qt5-wayland
-        qt6-wayland
-        xdg-utils
-        swww
-        waybar
-        thunar
-        alsa-utils
-        brightnessctl
-        rofi-wayland
-        slurp
-        grim
+        greetd                          # greeter daemon
+        greetd-tuigreet                 # greeter
+        xdg-desktop-portal-hyprland     # portal for Hyprland
+        polkit                          # access control
+        qt5-wayland                     # qt
+        qt6-wayland                     # qt
+        xdg-utils                       # extra utils
+        swww                            # wallpaper daemon
+        waybar                          # status bar
+        thunar                          # file manager
+        alsa-utils                      # sound
+        brightnessctl                   # brightness
+        rofi-wayland                    # app launcher
+        slurp                           # screen geometry
+        grim                            # image grabber
 
         # General
-        chromium
-        discord
-        inkscape
-        obs-studio
-        godot
-        lazygit
-        nodejs
-        gcc
-        dunst
-        wl-clipboard
-        vlc
-        zip
-        unzip
-        7zip
-        eza
-        zoxide
-        bat
-        bottom
-        sagemath
-        imagemagick
-        bind
-        nmap
-        socat
-        file
-        which
-        tree
-        wget
-        glow
-        # pulseaudio
-        pipewire
-        strace
-        ltrace
-        typst
-        zsh
-        bluez
-        bluez-utils
-        openvpn
-        jellyfin-ffmpeg
-        obsidian
-        ghc
-        stow
-        keyd
-        tmux
+        chromium                        # browser
+        discord                         # messaging
+        inkscape                        # PDF editor
+        obs-studio                      # recorder
+        godot                           # game engine
+        lazygit                         # git tui
+        nodejs                          # javascript
+        gcc                             # libc
+        dunst                           # notification daemon
+        wl-clipboard                    # clipboard
+        vlc                             # video player
+        zip                             # archive tool
+        unzip                           # archive tool
+        7zip                            # archive tool
+        eza                             # better ls
+        zoxide                          # better cd
+        bat                             # better cat
+        bottom                          # better top
+        sagemath                        # calculator
+        imagemagick                     # image converter
+        bind                            # network stuff
+        nmap                            # network listener
+        socat                           # network listener
+        file                            # file inspection
+        which                           # binary locator
+        tree                            # file tree
+        wget                            # HTTP requests
+        glow                            # terminal MD renderer
+        # pulseaudio                      # sound
+        pipewire                        # sound
+        strace                          # stack trace
+        ltrace                          # stack trace
+        typst                           # typsetting language
+        zsh                             # shell
+        bluez                           # bluetooth
+        bluez-utils                     # bluetooth
+        openvpn                         # vpn
+        jellyfin-ffmpeg                 # media converter
+        obsidian                        # notes
+        ghc                             # haskell
+        stow                            # symlink farm
+        keyd                            # key remapping
+        tmux                            # terminal multiplexer
 
         # Fonts
         # ttf-font-awesome
         # powerline-fonts
-        ttf-nerd-fonts-symbols
-        ttf-nerd-fonts-symbols-mono
+        nerd-fonts
     )
     # sudo pacman -Syu --noconfirm
     echo "${packages[@]}"
@@ -130,11 +138,11 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
     # AUR packages
     aur_packages=(
-        neofetch
-        whatsapp-for-linux
-        qview
-        lean4-bin
-        wlogout
+        neofetch                        # fetch
+        whatsapp-for-linux              # messaging
+        qview                           # image viewer
+        lean4-bin                       # lean
+        wlogout                         # logout manager
     )
     # yay -Syu --noconfirm
     yay -S --needed --noconfirm "${aur_packages[@]}"
@@ -142,6 +150,14 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
     echo -e "Changing to zsh...\n"
     sudo chsh -s /bin/zsh "$(logname)"
+    # Oh-my-zsh setup here
+
+
+    echo -e "Tmux setup...\n"
+    mkdir -p "$HOME/.tmux/plugins"
+    if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+        git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    fi
 
 
     echo -e "Starting the Bluetooth Service...\n"
@@ -150,31 +166,32 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
 
     echo -e "Cleaning out conflicting xdg portals...\n"
-    sudo pacman -R --noconfirm xdg-desktop-portal-gnome xdg-desktop-portal-gtk
+    sudo pacman -Rns --noconfirm --quiet xdg-desktop-portal-gnome xdg-desktop-portal-gtk 2>/dev/null
 
 
-    # -----Copy Config Files-----
-    read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
-    if [[ $CFG == "Y" || $CFG == "y" ]]; then
-        echo -e "Copying config files...\n"
-        sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh
-        # sudo mkdir -p /etc/greetd
-        sudo stow --dotfiles -t "/" greetd keyd
-
-        echo -e "Enabling greeter...\n"
-        sudo systemctl enable greetd
-        sleep 2
-        if ! getent passwd greeter > /dev/null; then
-            sudo useradd -m -G video greeter
-            sudo passwd -d greeter
-        fi
-
-        echo -e "Enabling keyd...\n"
-        sudo systemctl enable --now keyd
-        sleep 2
-
+    echo -e "Enabling greeter...\n"
+    sudo systemctl enable greetd
+    sleep 2
+    if ! getent passwd greeter > /dev/null; then
+        sudo useradd -m -G video greeter
+        sudo passwd -d greeter
     fi
+
+
+    echo -e "Enabling keyd...\n"
+    sudo systemctl enable --now keyd
+    sleep 2
 fi
 
+
+# -----Copy Config Files-----
+read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
+if [[ $CFG == "Y" || $CFG == "y" ]]; then
+    echo -e "Copying config files...\n"
+    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty
+    sudo stow --dotfiles -t "/" greetd keyd
+fi
+
+
 # -----Script is done-----
-echo -e "Script had completed.\n"
+echo -e "Script had completed!!!\n"
