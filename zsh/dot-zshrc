@@ -13,7 +13,6 @@ export EDITOR='nvim'
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 
-
 # ----- Helpers Init -----
 eval "$(starship init zsh)"
 
@@ -23,12 +22,7 @@ alias ls='eza --icons'
 alias ll='eza -l --icons'
 alias la='eza -la --icons'
 
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-
-if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+source <(fzf --zsh)
 
 
 
@@ -43,8 +37,14 @@ setopt SHARE_HISTORY
 
 
 # ----- Completion/Correction -----
-autoload -Uz compinit && compinit
-# setopt correct
+if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+if [[ -r /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]]; then
+    source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+fi
+
 
 
 

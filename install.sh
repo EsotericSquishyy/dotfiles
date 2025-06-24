@@ -1,8 +1,8 @@
 #! /usr/bin/env bash
 
-# https://github.com/SolDoesTech/hyprland/blob/main/set-hypr
+# For temporary installs: https://www.reddit.com/r/archlinux/comments/27yq8u/comment/ci5p3zt/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
-# -----Yay install-----
+# ----- Yay install -----
 if ! command -v yay &> /dev/null; then
     echo "Installing yay..."
     git clone https://aur.archlinux.org/yay.git /tmp/yay
@@ -10,7 +10,7 @@ if ! command -v yay &> /dev/null; then
     makepkg -si --noconfirm
 fi
 
-# -----Disable wifi powersave mode-----
+# ----- Disable wifi powersave mode -----
 read -n1 -rep 'Would you like to disable wifi powersave? (y,n)' WIFI
 if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
     LOC="/etc/NetworkManager/conf.d/wifi-powersave.conf"
@@ -23,7 +23,7 @@ if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
 fi
 
 
-# -----Package manager update-----
+# ----- Package manager update -----
 read -n1 -rep 'Would you like to update packages? (y,n)' UPDT
 if [[ $UPDT == "Y" || $UPDT == "y" ]]; then
     sudo pacman -Syu --noconfirm
@@ -31,7 +31,7 @@ if [[ $UPDT == "Y" || $UPDT == "y" ]]; then
 fi
 
 
-# -----Install all of the above pacakges-----
+# ----- Install all of the above pacakges -----
 read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
 
@@ -65,6 +65,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         clang                           # c lsp
         make                            # make
         tinymist                        # typst lsp
+        yarn                            # js package manager
 
         # Hyprland
         greetd                          # greeter daemon
@@ -102,6 +103,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         godot                           # game engine
         lazygit                         # git tui
         nodejs                          # javascript
+        npm                             # js package manager
         gcc                             # libc
         dunst                           # notification daemon
         vlc                             # video player
@@ -126,6 +128,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         typst                           # typsetting language
         zsh                             # shell
         zsh-syntax-highlighting         # syntax highlighting for zsh
+        zsh-autocomplete                # autocomplete for zsh
         starship                        # prompt manager
         openvpn                         # vpn
         jellyfin-ffmpeg                 # media converter
@@ -155,7 +158,12 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     )
     # yay -Syu --noconfirm
     yay -S --needed --noconfirm "${aur_packages[@]}"
+fi
 
+
+# ----- Services -----
+read -n1 -rep 'Would you like to start your services? (y,n)' SRVC
+if [[ $SRVC == "Y" || $SRVC == "y" ]]; then
 
     if [[ "$SHELL" != "/bin/zsh" ]]; then
         echo -e "Changing default shell to zsh...\n"
@@ -164,6 +172,10 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         echo -e "Default shell is already zsh. Skipping chsh...\n"
     fi
     # Oh-my-zsh setup here
+
+
+    echo -e "Changing default browser to firefox...\n"
+    xdg-settings set default-web-browser firefox.desktop
 
 
     echo -e "Tmux setup...\n"
@@ -203,7 +215,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 fi
 
 
-# -----Copy Config Files-----
+# ----- Copy Config Files -----
 read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
     echo -e "Copying config files...\n"
@@ -212,5 +224,5 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
 fi
 
 
-# -----Script is done-----
+# ----- Script is done -----
 echo -e "Script had completed!!!\n"
