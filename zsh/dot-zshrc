@@ -11,6 +11,7 @@
 # ----- Variables -----
 export EDITOR='nvim'
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
+bindkey -e # Disables vi binds
 
 
 # ----- Helpers Init -----
@@ -41,9 +42,9 @@ if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
-if [[ -r /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]]; then
-    source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-fi
+# if [[ -r /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]]; then
+#     source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# fi
 
 
 

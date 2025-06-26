@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
-# For temporary installs: https://www.reddit.com/r/archlinux/comments/27yq8u/comment/ci5p3zt/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+# For temporary installs: https://www.reddit.com/r/archlinux/comments/27yq8u/comment/ci5p3zt
+# Discord update fix: https://www.reddit.com/r/linuxmasterrace/comments/10bq9qq/comment/j4bk0li
 
 # ----- Yay install -----
 if ! command -v yay &> /dev/null; then
@@ -137,6 +138,9 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         stow                            # symlink farm
         keyd                            # key remapping
         tmux                            # terminal multiplexer
+        python                          # python
+        python-pip                      # python package manager
+        nix                             # nix (and nix-pkgs)
 
         # Fonts
         # ttf-font-awesome
