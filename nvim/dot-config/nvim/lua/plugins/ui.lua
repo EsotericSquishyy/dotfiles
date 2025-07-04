@@ -23,24 +23,12 @@ return {
   {
     -- Using snacks instead
     "goolord/alpha-nvim",
-    enabled = false,
     dependencies = { 'echasnovski/mini.icons' },
     config = function()
-      local startify = require("alpha.themes.startify")
-      startify.file_icons.provider = "mini"
-      require("alpha").setup(require("alpha.themes.theta").config)
+      -- dashboard.file_icons.provider = "mini"
+      require("plugins.configs.alpha")
+      -- require("alpha").setup(require("alpha.themes.dashboard").config)
     end,
-  },
-
-  {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-
-    opts = {
-      dashboard = { enabled = true },
-      scope = { enabled = true },
-    },
   },
 
   {
