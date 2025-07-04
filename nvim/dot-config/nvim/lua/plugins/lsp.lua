@@ -1,21 +1,42 @@
 return {
   {
+    "mason-org/mason-lspconfig.nvim",
+    dependencies = {
+      { "mason-org/mason.nvim", opts = {} },
+      "neovim/nvim-lspconfig",
+    },
+    opts = {
+      ensure_installed = {
+        "lua_ls",        -- lua
+        "pyright",       -- python
+        "tinymist",      -- typst
+        "clangd",        -- c, c++
+      },
+    },
+  },
+
+  {
     "neovim/nvim-lspconfig",
     config = function()
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-
-      require("lspconfig").lua_ls.setup { capabilites = capabilities }
-      require("lspconfig").pyright.setup { capabilites = capabilities }
-      require("lspconfig")["tinymist"].setup {
-        capabilites = capabilities,
-        settings = {
-          formatterMode = "typstyle",
-          exportPdf = "onType",
-          semanticTokens = "disable"
-        }
-      }
+      -- vim.lsp.config("*", {})
+      vim.lsp.enable({
+        "lua_ls",
+        "pyright",
+        "tinymist",
+        "clangd",
+      })
 
       vim.keymap.set("n", "<leader>F", function() vim.lsp.buf.format() end)
+      vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
+      vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end)
+      vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end)
+      vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end)
+      vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end)
+      vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end)
+      vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end)
+      vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end)
+      vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end)
+      vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end)
     end,
   },
 

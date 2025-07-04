@@ -62,10 +62,10 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         zathura-pdf-mupdf               # pdg zathura support
         fzf                             # fuzzy finder
         ripgrep                         # better grep
-        lua-language-server             # lua lsp
+        # lua-language-server             # lua lsp
         clang                           # c lsp
         make                            # make
-        tinymist                        # typst lsp
+        # tinymist                        # typst lsp
         yarn                            # js package manager
 
         # Hyprland
