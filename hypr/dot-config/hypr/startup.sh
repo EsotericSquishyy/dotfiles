@@ -20,7 +20,7 @@ if [[ -z "$wallpaper" ]]; then
     exit 1
 fi
 
-swww init &
+swww-daemon &
 sleep 1
 swww img "${wallpaper}" &
 waybar &

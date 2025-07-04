@@ -140,7 +140,8 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         tmux                            # terminal multiplexer
         python                          # python
         python-pip                      # python package manager
-        nix                             # nix (and nix-pkgs)
+        nix                             # nix (`extra-experimental-features = nix-command flakes` to /etc/nix/nix.conf)
+        docker                          # docker
 
         # Fonts
         # ttf-font-awesome
@@ -165,9 +166,20 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 fi
 
 
+# ----- Nix Startup -----
+read -n1 -rep 'Would you like to setup nix? (y,n)' NXSU
+    sudo systemctl enable --now nix-daemon.service
+    sudo groupadd nix-users
+    sudo usermod -aG nix-users squishyy
+    nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+    nix-channel --update
+
+
 # ----- Services -----
 read -n1 -rep 'Would you like to start your services? (y,n)' SRVC
 if [[ $SRVC == "Y" || $SRVC == "y" ]]; then
+
+    sudo systemctl enable --now docker
 
     if [[ "$SHELL" != "/bin/zsh" ]]; then
         echo -e "Changing default shell to zsh...\n"
