@@ -54,6 +54,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         # Fundamentals
         firefox                         # browser
         hyprland                        # Wayland compositor
+        hyprlock                        # Lock screen
         alacritty                       # terminal emulator
 
         # Neovim
@@ -168,11 +169,13 @@ fi
 
 # ----- Nix Startup -----
 read -n1 -rep 'Would you like to setup nix? (y,n)' NXSU
+if [[ $NXSU == "Y" || $NXSU == "y" ]]; then
     sudo systemctl enable --now nix-daemon.service
     sudo groupadd nix-users
     sudo usermod -aG nix-users squishyy
     nix-channel --add https://nixos.org/channels/nixpkgs-unstable
     nix-channel --update
+fi
 
 
 # ----- Services -----
@@ -235,7 +238,7 @@ fi
 read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
     echo -e "Copying config files...\n"
-    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty starship
+    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty starship wlogout
     sudo stow --dotfiles -t "/" greetd keyd
 fi
 
