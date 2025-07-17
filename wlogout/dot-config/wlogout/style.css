@@ -5,7 +5,7 @@
     font-weight: bold;
 }
 window {
-    background-color: #000000;
+    background-color: #1b1918;
 } 
 
 button {
@@ -38,15 +38,15 @@ button:hover {
 
 
 /* ===== Buttons ===== */
-#shutdown       { background-image: image(url("./icons/power-color.svg")); }
-#shutdown:hover { background-image: image(url("./icons/power.svg")); }
+#shutdown       { background-image: image(url("./icons/power-fg.svg")); }
+#shutdown:hover { background-image: image(url("./icons/power-bg.svg")); }
 
-#reboot         { background-image: image(url("./icons/reboot-color.svg")); }
-#reboot:hover   { background-image: image(url("./icons/reboot.svg")); }
+#reboot         { background-image: image(url("./icons/reboot-fg.svg")); }
+#reboot:hover   { background-image: image(url("./icons/reboot-bg.svg")); }
 
-#sleep          { background-image: image(url("./icons/sleep-color.svg")); }
-#sleep:hover    { background-image: image(url("./icons/sleep.svg")); }
+#sleep          { background-image: image(url("./icons/sleep-fg.svg")); }
+#sleep:hover    { background-image: image(url("./icons/sleep-bg.svg")); }
 
-#logout         { background-image: image(url("./icons/logout-color.svg")); }
-#logout:hover   { background-image: image(url("./icons/logout.svg")); }
+#logout         { background-image: image(url("./icons/logout-fg.svg")); }
+#logout:hover   { background-image: image(url("./icons/logout-bg.svg")); }
 
