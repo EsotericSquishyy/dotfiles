@@ -75,7 +75,7 @@
     "custom/power": {
         "format": "{icon}",
         "format-icons": ["  "],
-        "on-click": "wlogout --protocol layer-shell",
+        "on-click": "wlogout --protocol layer-shell -b 4",
         "tooltip": false,
     },
 }

@@ -143,6 +143,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         python-pip                      # python package manager
         nix                             # nix (`extra-experimental-features = nix-command flakes` to /etc/nix/nix.conf)
         docker                          # docker
+        gnu-netcat
 
         # Fonts
         # ttf-font-awesome
