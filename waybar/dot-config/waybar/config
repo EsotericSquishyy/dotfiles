@@ -1,11 +1,25 @@
 {
     "layer": "top",
     "position": "top",
-    "modules-left": ["custom/nixos", "hyprland/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["backlight", "pulseaudio", "bluetooth", "network", "battery", "custom/power"],
-    "custom/nixos": {
-        "format": "  ",
+
+    "modules-left": [
+        "custom/launcher",
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "clock"
+    ],
+    "modules-right": [
+        "backlight",
+        "pulseaudio",
+        "bluetooth",
+        "network",
+        "battery",
+        "custom/power"
+    ],
+
+    "custom/launcher": {
+        "format": "  ",
         "tooltip": false,
         "on-click": "rofi -show drun"
     },
@@ -19,14 +33,12 @@
             "default": ""
         }
     },
+
     "clock": {
-        "format": " {:%H:%M}",
-        // https://www.mankier.com/3/strftime
-        "format-alt": "󰃭 {:%a, %B %d, %Y}",
-        "actions": {
-            "on-click": "mode",
-        }
+        "format": " {:%H:%M  󰃭 %d/%m/%Y}",
+        "tooltip": false,
     },
+
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",

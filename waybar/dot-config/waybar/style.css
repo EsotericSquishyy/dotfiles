@@ -1,75 +1,81 @@
 * {
-  border: none;
-  font-family: 'Fira Code', 'Symbols Nerd Font Mono';
-  font-size: 16px;
-  font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
-  min-height: 35px;
+    border: none;
+    min-height: 0;
+    font-family: "Mononoki Nerd Font Mono";
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0;
 }
 
 window#waybar {
-  background: transparent;
+    background: #1b1919;
+    border: 2px solid #f22c40;
+    border-radius: 4px;
+}
+tooltip {
+    background-color: #101010;
+    border: 2px solid #f22c40;
+    font-size: 2px;
+    color: #f22c40;
+}
+tooltip label {
+    margin: 8px;
 }
 
-#custom-nixos, #workspaces {
-  border-radius: 10px;
-  background-color: #11111b;
-  color: #b4befe;
-  margin-top: 5px;
-  margin-right: 15px;
-  padding-top: 1px;
-  padding-left: 10px;
-  padding-right: 10px;
+#workspaces {
+    margin: 6px 0px 6px 6px;
+    border-radius: 4px;
 }
-
-#custom-nixos {
-  font-size: 20px;
-  margin-left: 15px;
-  color: #b4befe;
-}
-
 #workspaces button {
-  /* background: #11111b; */
-  color: #b4befe;
+    all: initial;
+    min-width: 0;
+    box-shadow: inset 0 -3px transparent;
+    padding: 2px 4px;
+    color: #f22c40;
+    background-color: #1b1919;
+    border: 2px solid #f22c40;
+    border-radius: 4px;
+    margin-right: 2px;
 }
 #workspaces button.active {
-  background: #b4befe;
-  color: #11111b;
-}
-#workspaces button:hover {
-  background: #8292fd;
-  color: #11111b;
-}
-
-#clock, #backlight, #pulseaudio, #bluetooth, #network, #battery, #custom-power {
-  border-radius: 10px;
-  background-color: #11111b;
-  color: #cdd6f4;
-  margin-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-right: 15px;
-}
-
-#battery.full {
-    color: #befeb4;
-}
-#battery.warning {
-    color: #fd6c74;
-}
-
-#backlight, #bluetooth {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  padding-right: 5px;
-  margin-right: 0
-}
-
-#pulseaudio, #network {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  padding-left: 5px;
+    color: #1b1919;
+    background-color: #f22c40;
 }
 
 #clock {
-  margin-right: 0;
+    background-color: #f22c40;
+    border: 2px solid #1b1919;
+    color: #1b1919;
+    margin: 6px 6px 6px 0px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+#backlight,
+#pulseaudio,
+#bluetooth,
+#network,
+#battery {
+    background-color: #1b1919;
+    border: 2px solid #f22c40;
+    color: #f22c40;
+    margin: 6px 6px 6px 0px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+    color: #c38418;
+    border: 2px solid #c38418;
+}
+
+#custom-launcher,
+#custom-power {
+    font-size: 28px;
+    padding-left: 5px;
+    padding-right: 5px;
+    transition: none;
+    color: #f22c40;
 }
