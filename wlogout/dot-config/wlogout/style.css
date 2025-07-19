@@ -5,7 +5,7 @@
     font-weight: bold;
 }
 window {
-    background-color: #1b1918;
+    background-color: rgba(27, 25, 24, 0.6); /* #1b1918 */
 } 
 
 button {

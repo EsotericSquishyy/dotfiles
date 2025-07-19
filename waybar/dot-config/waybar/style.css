@@ -8,12 +8,12 @@
 }
 
 window#waybar {
-    background: #1b1919;
+    background: rgba(27, 25, 24, 0.6); /* #1b1918 */
     border: 2px solid #f22c40;
     border-radius: 4px;
 }
 tooltip {
-    background-color: #101010;
+    background-color: #1b1919;
     border: 2px solid #f22c40;
     font-size: 2px;
     color: #f22c40;
@@ -32,7 +32,7 @@ tooltip label {
     box-shadow: inset 0 -3px transparent;
     padding: 2px 4px;
     color: #f22c40;
-    background-color: #1b1919;
+    background-color: transparent;
     border: 2px solid #f22c40;
     border-radius: 4px;
     margin-right: 2px;
@@ -44,7 +44,7 @@ tooltip label {
 
 #clock {
     background-color: #f22c40;
-    border: 2px solid #1b1919;
+    border: 2px solid transparent;
     color: #1b1919;
     margin: 6px 6px 6px 0px;
     padding: 2px 8px;
@@ -56,7 +56,7 @@ tooltip label {
 #bluetooth,
 #network,
 #battery {
-    background-color: #1b1919;
+    background-color: transparent;
     border: 2px solid #f22c40;
     color: #f22c40;
     margin: 6px 6px 6px 0px;
