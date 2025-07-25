@@ -79,12 +79,17 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         xdg-utils                       # extra utils
         swww                            # wallpaper daemon
         waybar                          # status bar
-        thunar                          # file manager
         alsa-utils                      # sound
         brightnessctl                   # brightness
         rofi-wayland                    # app launcher
         slurp                           # screen geometry
         grim                            # image grabber
+
+        # Yazi
+        yazi                            # file manager
+        jellyfin-ffmpeg                 # media converter
+        jq                              # json
+        imagemagick                     # image converter
 
         # System utils
         pipewire                        # audio
@@ -117,7 +122,6 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         bat                             # better cat
         bottom                          # better top
         sagemath                        # calculator
-        imagemagick                     # image converter
         nmap                            # network listener
         socat                           # network listener
         file                            # file inspection
@@ -133,7 +137,6 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         zsh-autocomplete                # autocomplete for zsh
         starship                        # prompt manager
         openvpn                         # vpn
-        jellyfin-ffmpeg                 # media converter
         obsidian                        # notes
         ghc                             # haskell
         stow                            # symlink farm
@@ -143,7 +146,8 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         python-pip                      # python package manager
         nix                             # nix (`extra-experimental-features = nix-command flakes` to /etc/nix/nix.conf)
         docker                          # docker
-        gnu-netcat
+        gnu-netcat                      # nc
+        fastfetch                       # fetch
 
         # Fonts
         # ttf-font-awesome
@@ -157,7 +161,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
     # AUR packages
     aur_packages=(
-        neofetch                        # fetch
+        vesktop-bin                     # messaging (https://github.com/refact0r/system24)
         whatsapp-for-linux              # messaging
         qview                           # image viewer
         lean4-bin                       # lean
@@ -239,7 +243,7 @@ fi
 read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
     echo -e "Copying config files...\n"
-    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty starship wlogout
+    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty starship wlogout vesktop yazi
     sudo stow --dotfiles -t "/" greetd keyd
 fi
 

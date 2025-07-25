@@ -2,7 +2,9 @@
 
 ## TODO
 - zshenv
-- Nix flakes
-- Optimize fzf bindings
+- optimize fzf bindings
 - gtk themes 
-- setup notification better
+    - file browser
+- setup better notification
+- firefox/zen rice
+- better discord
