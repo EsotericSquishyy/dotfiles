@@ -90,6 +90,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         jellyfin-ffmpeg                 # media converter
         jq                              # json
         imagemagick                     # image converter
+        ueberzugpp                      # image preview on alacritty
 
         # System utils
         pipewire                        # audio
@@ -183,6 +184,15 @@ if [[ $NXSU == "Y" || $NXSU == "y" ]]; then
 fi
 
 
+# ----- Copy Config Files -----
+read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
+if [[ $CFG == "Y" || $CFG == "y" ]]; then
+    echo -e "Copying config files...\n"
+    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty starship wlogout vesktop yazi
+    sudo stow --dotfiles -t "/" greetd keyd
+fi
+
+
 # ----- Services -----
 read -n1 -rep 'Would you like to start your services? (y,n)' SRVC
 if [[ $SRVC == "Y" || $SRVC == "y" ]]; then
@@ -236,15 +246,11 @@ if [[ $SRVC == "Y" || $SRVC == "y" ]]; then
     echo -e "Enabling keyd...\n"
     sudo systemctl enable --now keyd
     sleep 2
-fi
 
 
-# ----- Copy Config Files -----
-read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
-if [[ $CFG == "Y" || $CFG == "y" ]]; then
-    echo -e "Copying config files...\n"
-    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty starship wlogout vesktop yazi
-    sudo stow --dotfiles -t "/" greetd keyd
+    echo -e "Updating desktop database...\n"
+    update-desktop-database "$HOME/.local/share/applications/"
+    sleep 2
 fi
 
 

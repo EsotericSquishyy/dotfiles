@@ -1,10 +1,8 @@
-[mgr]
+[manager]
 show_hidden = true
-show_symlink = true
-
 [opener]
 edit = [
-    { run = 'nvim "$@"', block = true },
+    { run = 'vim "$@"', block = true },
 ]
 
 play = [
@@ -13,9 +11,3 @@ play = [
 open = [
     { run = 'xdg-open "$@"', desc = "Open" },
 ]
-
-[[plugin.prepend_fetchers]]
-id   = "mime"
-name = "*"
-run  = "mime-ext"
-prio = "high"
