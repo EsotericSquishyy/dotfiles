@@ -179,7 +179,7 @@ fi
 read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
     echo -e "Copying config files...\n"
-    sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty starship wlogout vesktop yazi
+    sudo stow --dotfiles -t "$HOME" bin hypr nvim tmux waybar zsh alacritty starship wlogout vesktop yazi
     sudo stow --dotfiles -t "/" greetd keyd
 fi
 
