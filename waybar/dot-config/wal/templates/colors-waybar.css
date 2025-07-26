@@ -1,0 +1,21 @@
+@define-color foreground {foreground};
+@define-color background {background};
+@define-color background-alpha rgba({background.rgb},0.7);
+@define-color cursor {cursor};
+
+@define-color base00 {color0};
+@define-color base01 {color1};
+@define-color base02 {color2};
+@define-color base03 {color3};
+@define-color base04 {color4};
+@define-color base05 {color5};
+@define-color base06 {color6};
+@define-color base07 {color7};
+@define-color base08 {color8};
+@define-color base09 {color9};
+@define-color base0A {color10};
+@define-color base0B {color11};
+@define-color base0C {color12};
+@define-color base0D {color13};
+@define-color base0E {color14};
+@define-color base0F {color15};

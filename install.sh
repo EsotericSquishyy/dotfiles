@@ -11,18 +11,6 @@ if ! command -v yay &> /dev/null; then
     makepkg -si --noconfirm
 fi
 
-# ----- Disable wifi powersave mode -----
-read -n1 -rep 'Would you like to disable wifi powersave? (y,n)' WIFI
-if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
-    LOC="/etc/NetworkManager/conf.d/wifi-powersave.conf"
-    echo -e "The following has been added to $LOC.\n"
-    echo -e "[connection]\nwifi.powersave = 2" | sudo tee -a $LOC
-    echo -e "\n"
-    echo -e "Restarting NetworkManager service...\n"
-    sudo systemctl restart NetworkManager
-    sleep 3
-fi
-
 
 # ----- Package manager update -----
 read -n1 -rep 'Would you like to update packages? (y,n)' UPDT
@@ -150,6 +138,9 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         gnu-netcat                      # nc
         fastfetch                       # fetch
 
+        # Pywal
+        python-pywal                    # colorschemes
+
         # Fonts
         # ttf-font-awesome
         # powerline-fonts
@@ -191,6 +182,35 @@ if [[ $CFG == "Y" || $CFG == "y" ]]; then
     sudo stow --dotfiles -t "$HOME" hypr nvim tmux waybar zsh alacritty starship wlogout vesktop yazi
     sudo stow --dotfiles -t "/" greetd keyd
 fi
+
+
+
+# ----- Pywal -----
+read -n1 -rep 'Would you like to update pywal cache? (y,n)' PYW
+if [[ $PYW == "Y" || $PYW == "y" ]]; then
+    echo -e "Updating pywal cache...\n"
+    wal -R
+
+    # Waybar
+    ln -s $HOME/.cache/wal/colors-waybar.css $HOME/.config/waybar/colors.css
+
+    # Hyprland and Hyprlock
+    ln -s $HOME/.cache/wal/colors-hyprland.conf $HOME/.config/hypr/colors.conf
+
+    # Wlogout
+    ln -s $HOME/.cache/wal/colors-wlogout.css $HOME/.config/wlogout/colors.css
+
+    mkdir -p "$(readlink -f "$HOME/.config/wlogout")/icons"
+    actions=("power" "reboot" "sleep" "logout")
+    for action in "${actions[@]}"; do
+        for type in bg fg; do
+            src="$HOME/.cache/wal/${action}-${type}-wlogout.svg"
+            dest="$HOME/.config/wlogout/icons/${action}-${type}.svg"
+            ln -s "$src" "$dest"
+        done
+    done
+fi
+
 
 
 # ----- Services -----

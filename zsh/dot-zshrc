@@ -58,5 +58,11 @@ fi
 
 
 
+# ----- Pywal -----
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
+
+
+
 # ----- Reload config ------
 alias reload='source ~/.zshrc'

@@ -41,11 +41,19 @@ return {
     end
   },
 
+  -- {
+  --   "RRethy/base16-nvim",
+  --   config = function()
+  --     vim.cmd.colorscheme "base16-atelier-forest"
+  --   end
+  -- },
   {
-    "RRethy/base16-nvim",
+    'uZer/pywal16.nvim',
+    -- for local dev replace with:
+    -- dir = '~/your/path/pywal16.nvim',
     config = function()
-      vim.cmd.colorscheme "base16-atelier-forest"
-    end
+      vim.cmd.colorscheme("pywal16")
+    end,
   },
 
   {
@@ -78,7 +86,8 @@ return {
 
       require('lualine').setup{
         options = {
-          theme = base16,
+          -- theme = base16,
+          theme = "pywal16-nvim",
           globalstatus = true,
           always_show_tabline = true,
         },
