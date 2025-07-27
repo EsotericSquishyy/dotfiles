@@ -14,23 +14,19 @@
         devShells.${system} = {
             default = pkgs.mkShell rec {
                 buildInputs = with pkgs; [
+                    # Basics
                     neovim
-                    lazygit
                     zathura # PDF viewer
 
-                    # Telescope
+                    # Fzf
                     fzf
                     ripgrep
 
-                    # lsp deps
-                    tinymist
-                    lua-language-server
-                    clang # lsp
-
-                    # For making dependencies
+                    # Making dependencies
                     gnumake
 
-                    bashInteractive # requires for nvim term
+                    # Nvim term
+                    bashInteractive
                 ];
 
                 # Define shell setup actions

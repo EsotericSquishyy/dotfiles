@@ -35,11 +35,11 @@ local function button(sc, txt, keybind, keybind_opts)
 end
 
 dashboard.section.buttons.val = {
-  button("f", "  Find file", ":Telescope find_files<CR>"),
+  button("f", "  Find file", ":FzfLua files<CR>"),
   button("n", "  New file", ":ene <BAR> startinsert <CR>"),
-  button("r", "  Recent files", ":Telescope oldfiles<CR>"),
-  button("g", "  Find text", ":Telescope live_grep<CR>"),
-  button("h", "  Help", ":Telescope help_tags<CR>"),
+  button("r", "  Recent files", ":FzfLua oldfiles<CR>"),
+  button("g", "  Find text", ":FzfLua live_grep<CR>"),
+  button("h", "  Help", ":FzfLua helptags<CR>"),
   button("q", "  Quit", ":qa<CR>"),
 }
 
@@ -50,7 +50,7 @@ dashboard.section.footer.val = function()
 end
 
 -- Highlight groups
-dashboard.section.header.opts.hl = "Identifier"
+dashboard.section.header.opts.hl = "Constant"
 dashboard.section.footer.opts.hl = "String"
 
 -- Final setup

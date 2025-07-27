@@ -3,8 +3,8 @@
 ## TODO
 - zshenv
 - optimize fzf bindings
-- gtk themes 
-    - file browser
-- setup better notification
+- qt?
+- notifications
 - firefox/zen rice
-- better discord
+- color for vesktop
+- color for yazi

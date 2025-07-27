@@ -3,39 +3,20 @@ vim.keymap.set("n", "-", "<cmd>Oil<CR>")
 
 return {
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.8',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        -- config = function()
-        --   require('telescope').load_extension('fzf')
-        -- end,
-      }
-    },
+    "ibhagwan/fzf-lua",
+    dependencies = { "echasnovski/mini.icons" },
+    opts = {},
     config = function()
-      require('telescope').load_extension('fzf')
-      require('telescope').setup {
-        pickers = {
-          extensions = {
-            fzf = {}
-          }
-        }
-      }
+      require('fzf-lua').setup({'fzf-vim'})
 
-      vim.keymap.set("n", "<leader>fm", require('telescope.builtin').builtin) -- Find builtins
-      vim.keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags) -- Find help tags
-      vim.keymap.set("n", "<leader>ff", require('telescope.builtin').find_files) -- Find files
-      vim.keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep) -- Find text
-      vim.keymap.set("n", "<leader>fb", require('telescope.builtin').buffers) -- Find buffers
+      vim.keymap.set("n", "<leader>fm", require('fzf-lua').builtin) -- Find builtins
+      vim.keymap.set("n", "<leader>fh", require('fzf-lua').helptags) -- Find help tags
+      vim.keymap.set("n", "<leader>ff", require('fzf-lua').files) -- Find files
+      vim.keymap.set("n", "<leader>fg", require('fzf-lua').live_grep) -- Find text
+      vim.keymap.set("n", "<leader>fb", require('fzf-lua').buffers) -- Find buffers
       vim.keymap.set("n", "<leader>fc", function() -- Find config
-        local opts = require('telescope.themes').get_dropdown({
-          cwd = vim.fn.stdpath("config")
-        })
-        require('telescope.builtin').find_files(opts)
-      end)
+        require('fzf-lua').files({ cwd = vim.fn.stdpath("config") })
+      end, { desc = "Find config files" })
     end
   },
 

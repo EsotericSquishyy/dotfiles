@@ -49,8 +49,6 @@ return {
   -- },
   {
     'uZer/pywal16.nvim',
-    -- for local dev replace with:
-    -- dir = '~/your/path/pywal16.nvim',
     config = function()
       vim.cmd.colorscheme("pywal16")
     end,
@@ -79,10 +77,11 @@ return {
 
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { "echasnovski/mini.icons" },
     config = function()
-      local base16 = require('lualine.themes.base16')
-      base16.normal.c.bg = 'none' -- removes main background
+      -- For base16 colorscheme
+      -- local base16 = require('lualine.themes.base16')
+      -- base16.normal.c.bg = 'none' -- removes main background
 
       require('lualine').setup{
         options = {
