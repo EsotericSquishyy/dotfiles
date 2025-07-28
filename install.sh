@@ -199,7 +199,6 @@ if [[ $PYW == "Y" || $PYW == "y" ]]; then
 
     # Wlogout
     ln -s $HOME/.cache/wal/colors-wlogout.css $HOME/.config/wlogout/colors.css
-
     mkdir -p "$(readlink -f "$HOME/.config/wlogout")/icons"
     actions=("power" "reboot" "sleep" "logout")
     for action in "${actions[@]}"; do
@@ -209,6 +208,12 @@ if [[ $PYW == "Y" || $PYW == "y" ]]; then
             ln -s "$src" "$dest"
         done
     done
+
+    # Yazi
+    ln -s $HOME/.cache/wal/theme-yazi.toml $HOME/.config/yazi/theme.toml
+
+    # Vencord
+    ln -s $HOME/.cache/wal/pywalcolors-vencord.theme.css $HOME/.config/vesktop/themes/pywalcolors.theme.css
 fi
 
 
