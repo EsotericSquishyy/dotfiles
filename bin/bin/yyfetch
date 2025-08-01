@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+fastfetch --colors-block-range-start 9 --colors-block-width 3 -c "$HOME/.config/fastfetch/configs/default.jsonc"
