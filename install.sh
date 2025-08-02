@@ -137,6 +137,9 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         docker                          # docker
         gnu-netcat                      # nc
         fastfetch                       # fetch
+        man-pages                       # man
+        man-db                          # man
+        less                            # pager
 
         # Pywal
         python-pywal                    # colorschemes
@@ -180,7 +183,7 @@ fi
 read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
 if [[ $CFG == "Y" || $CFG == "y" ]]; then
     echo -e "Copying config files...\n"
-    sudo stow --dotfiles -t "$HOME" bin hypr nvim tmux waybar zsh alacritty starship wlogout vesktop yazi fastfetch
+    sudo stow --dotfiles -t "$HOME" bin hypr nvim tmux waybar zsh alacritty starship wlogout vesktop yazi fastfetch rofi
     sudo stow --dotfiles -t "/" greetd keyd
 
     if command -v firefox >/dev/null 2>&1; then
@@ -223,6 +226,9 @@ if [[ $PYW == "Y" || $PYW == "y" ]]; then
 
     # Vencord
     ln -s $HOME/.cache/wal/pywalcolors-vencord.theme.css $HOME/.config/vesktop/themes/pywalcolors.theme.css
+
+    # Rofi
+    ln -s $HOME/.cache/wal/colors-rofi.rasi $HOME/.config/rofi/colors.rasi
 fi
 
 
