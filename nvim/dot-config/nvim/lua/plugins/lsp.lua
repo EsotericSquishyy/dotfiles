@@ -12,6 +12,7 @@ return {
         -- "basedpyright",  -- typed python
         "tinymist",      -- typst
         "clangd",        -- c, c++
+        "rust_analyzer", -- rust
       },
     },
   },
@@ -26,6 +27,7 @@ return {
         -- "basedpyright",
         "tinymist",
         "clangd",
+        "rust_analyzer",
       })
 
       vim.keymap.set("n", "<leader>F", function() vim.lsp.buf.format() end)

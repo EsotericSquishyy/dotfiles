@@ -6,3 +6,4 @@
 - qt?
 - notifications
 - color for vesktop
+- dynamic color for tmux

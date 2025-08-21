@@ -140,6 +140,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         man-pages                       # man
         man-db                          # man
         less                            # pager
+        qbittorrent-nox                 # Bit torrent
 
         # Pywal
         python-pywal                    # colorschemes
@@ -198,7 +199,7 @@ fi
 read -n1 -rep 'Would you like to update pywal cache? (y,n)' PYW
 if [[ $PYW == "Y" || $PYW == "y" ]]; then
     echo -e "Updating pywal cache...\n"
-    wal -R
+    wal -R # use -a 0 flag to disable background
 
     # Firefox
     pywalfox update
