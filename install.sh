@@ -141,6 +141,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         man-db                          # man
         less                            # pager
         qbittorrent-nox                 # Bit torrent
+        termshark                       # Wireshark
 
         # Pywal
         python-pywal                    # colorschemes
