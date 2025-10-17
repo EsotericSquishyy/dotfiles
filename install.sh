@@ -133,6 +133,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         tmux                            # terminal multiplexer
         python                          # python
         python-pip                      # python package manager
+        uv                              # python package manager
         nix                             # nix (`extra-experimental-features = nix-command flakes` to /etc/nix/nix.conf)
         docker                          # docker
         gnu-netcat                      # nc
