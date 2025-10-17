@@ -133,7 +133,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         tmux                            # terminal multiplexer
         python                          # python
         python-pip                      # python package manager
-        uv                              # python package manager
+        python-uv                       # python package manager
         nix                             # nix (`extra-experimental-features = nix-command flakes` to /etc/nix/nix.conf)
         docker                          # docker
         gnu-netcat                      # nc
@@ -161,7 +161,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
     # AUR packages
     aur_packages=(
         vesktop-bin                     # messaging (https://github.com/refact0r/system24)
-        whatsapp-for-linux              # messaging
+        # whatsapp-for-linux              # messaging
         qview                           # image viewer
         lean4-bin                       # lean
         wlogout                         # logout manager
