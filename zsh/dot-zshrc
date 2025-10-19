@@ -1,6 +1,6 @@
 # ----- Variables -----
 export EDITOR='nvim'
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 bindkey -e # Disables vi binds
 
 

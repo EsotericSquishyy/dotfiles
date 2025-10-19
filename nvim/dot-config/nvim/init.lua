@@ -35,4 +35,5 @@ vim.keymap.set("n", "<C-S-L>", ":wincmd L<CR>", { silent = true })
 -- Quickfix list
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")
 vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>")
-
+vim.keymap.set('n', '<leader>q', '<cmd>copen<CR>')
+vim.keymap.set('n', '<leader>Q', '<cmd>cclose<CR>')

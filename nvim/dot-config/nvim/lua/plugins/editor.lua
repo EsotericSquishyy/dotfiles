@@ -7,12 +7,34 @@ return {
     dependencies = { "echasnovski/mini.icons" },
     opts = {},
     config = function()
-      require('fzf-lua').setup({'fzf-vim'})
+      local actions = require("fzf-lua.actions")
+      require("fzf-lua").setup({
+        "fzf-vim",
+        files = {
+          git_icons = false,
+          file_icons = false,
+        },
+        grep = {
+          git_icons = false,
+          file_icons = false,
+          rg_glob = true,
+          rg_opts = "--column --line-number --no-heading --color=always --smart-case "
+            .. "--max-columns=4096 --pcre2 -e", -- Added -P for perl regex
+        },
+        keymap = {
+          fzf = {
+            -- https://man.archlinux.org/man/fzf.1.en#AVAILABLE_ACTIONS:
+            ["ctrl-q"] = "select-all+accept",
+          },
+        },
+      })
 
       vim.keymap.set("n", "<leader>fm", require('fzf-lua').builtin) -- Find builtins
       vim.keymap.set("n", "<leader>fh", require('fzf-lua').helptags) -- Find help tags
       vim.keymap.set("n", "<leader>ff", require('fzf-lua').files) -- Find files
+      vim.keymap.set("n", "<leader>fr", require('fzf-lua').resume) -- Resume previous picker
       vim.keymap.set("n", "<leader>fg", require('fzf-lua').live_grep) -- Find text
+      vim.keymap.set("n", "<leader>fq", require('fzf-lua').lgrep_quickfix) -- Find text
       vim.keymap.set("n", "<leader>fb", require('fzf-lua').buffers) -- Find buffers
       vim.keymap.set("n", "<leader>fc", function() -- Find config
         require('fzf-lua').files({ cwd = vim.fn.stdpath("config") })
