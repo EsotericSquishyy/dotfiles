@@ -76,4 +76,25 @@ return {
     end,
     ft = { "markdown" },
   },
+
+  {
+    'NickvanDyke/opencode.nvim',
+    dependencies = {
+      { "folke/snacks.nvim", opts = { input = {} } },
+    },
+    config = function()
+      vim.g.opencode_opts = {
+        input = {
+          prompt = "Ask",
+          icon = "",
+        },
+        terminal = false, -- disable nvim opencode terminal
+      }
+      vim.o.autoread = true
+
+      vim.keymap.set('n', '<leader>oA', function() require('opencode').ask("", { submit = true }) end, { desc = 'Ask opencode' })
+      vim.keymap.set({'n', 'v'}, "<leader>oa", function() require("opencode").ask("@this: ", { submit = true }) end, { desc = "Ask about this" })
+      vim.keymap.set('n', '<leader>oy', function() require('opencode').command('messages_copy') end, { desc = 'Copy last opencode response' })
+    end,
+  },
 }

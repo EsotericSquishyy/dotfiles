@@ -53,6 +53,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         ripgrep                         # better grep
         # lua-language-server             # lua lsp
         clang                           # c lsp
+        llvm                            # llvm
         make                            # make
         # tinymist                        # typst lsp
         yarn                            # js package manager
@@ -136,6 +137,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         python-uv                       # python package manager
         nix                             # nix (`extra-experimental-features = nix-command flakes` to /etc/nix/nix.conf)
         docker                          # docker
+        docker-compose                  # docker compose
         gnu-netcat                      # nc
         fastfetch                       # fetch
         man-pages                       # man
@@ -143,6 +145,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         less                            # pager
         qbittorrent-nox                 # Bit torrent
         termshark                       # Wireshark
+        ollama                          # LLMs
 
         # Pywal
         python-pywal                    # colorschemes
@@ -165,6 +168,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         qview                           # image viewer
         lean4-bin                       # lean
         wlogout                         # logout manager
+        opencode-bin                    # opencode
     )
     # yay -Syu --noconfirm
     yay -S --needed --noconfirm "${aur_packages[@]}"
