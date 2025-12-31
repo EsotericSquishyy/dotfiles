@@ -1,8 +1,5 @@
 #! /usr/bin/env bash
 
-# For temporary installs: https://www.reddit.com/r/archlinux/comments/27yq8u/comment/ci5p3zt
-# Discord update fix: https://www.reddit.com/r/linuxmasterrace/comments/10bq9qq/comment/j4bk0li
-
 # ----- Yay install -----
 if ! command -v yay &> /dev/null; then
     echo "Installing yay..."
@@ -51,11 +48,9 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         zathura-pdf-mupdf               # pdg zathura support
         fzf                             # fuzzy finder
         ripgrep                         # better grep
-        # lua-language-server             # lua lsp
         clang                           # c lsp
         llvm                            # llvm
         make                            # make
-        # tinymist                        # typst lsp
         yarn                            # js package manager
 
         # Hyprland
@@ -92,18 +87,8 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         bluez                           # bluetooth
         bluez-utils                     # bluetooth
 
-        # General
-        chromium                        # browser
-        discord                         # messaging
-        inkscape                        # PDF editor
-        obs-studio                      # recorder
-        godot                           # game engine
+        # Terminal Utils
         lazygit                         # git tui
-        nodejs                          # javascript
-        npm                             # js package manager
-        gcc                             # libc
-        dunst                           # notification daemon
-        vlc                             # video player
         zip                             # archive tool
         unzip                           # archive tool
         7zip                            # archive tool
@@ -111,49 +96,62 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         zoxide                          # better cd
         bat                             # better cat
         bottom                          # better top
-        sagemath                        # calculator
         nmap                            # network listener
         socat                           # network listener
         file                            # file inspection
         which                           # binary locator
         tree                            # file tree
         wget                            # HTTP requests
-        glow                            # terminal MD renderer
-        strace                          # stack trace
-        ltrace                          # stack trace
-        typst                           # typsetting language
-        zsh                             # shell
+        stow                            # symlink farm
+        tmux                            # terminal multiplexer
+        fastfetch                       # fetch
+        man-pages                       # man
+        man-db                          # man
+        less                            # pager
+
+        # General
+        chromium                        # browser
+        discord                         # messaging
+        inkscape                        # PDF editor
+        obs-studio                      # recorder
+        godot                           # game engine
+        dunst                           # notification daemon
+        vlc                             # video player
         zsh-syntax-highlighting         # syntax highlighting for zsh
         zsh-autocomplete                # autocomplete for zsh
         starship                        # prompt manager
         openvpn                         # vpn
         obsidian                        # notes
-        ghc                             # haskell
-        stow                            # symlink farm
         keyd                            # key remapping
-        tmux                            # terminal multiplexer
+        ollama                          # LLMs
+        python-pywal                    # pywal colorschemes
+
+        # Langs
+        nix                             # nix (`extra-experimental-features = nix-command flakes` to /etc/nix/nix.conf)
+        zsh                             # shell
+        nodejs                          # javascript
+        npm                             # js package manager
+        gcc                             # libc
+        ghc                             # haskell
         python                          # python
         python-pip                      # python package manager
         python-uv                       # python package manager
-        nix                             # nix (`extra-experimental-features = nix-command flakes` to /etc/nix/nix.conf)
+        sagemath                        # calculator
+        typst                           # typsetting language
+
+        # Security
+        qbittorrent-nox                 # Bit torrent
+        termshark                       # Wireshark
+        gef                             # gdb fork
+        ghidra                          # rev
+        radare2                         # rev
+        strace                          # stack trace
+        ltrace                          # stack trace
+
+        # Docker
         docker                          # docker
         docker-buildx                   # docker buildx
         docker-compose                  # docker compose
-        gnu-netcat                      # nc
-        fastfetch                       # fetch
-        man-pages                       # man
-        man-db                          # man
-        less                            # pager
-        qbittorrent-nox                 # Bit torrent
-        termshark                       # Wireshark
-        ollama                          # LLMs
-        gef                             # gdb fork
-        ghidra
-        radare2
-
-        # Pywal
-        python-pywal                    # colorschemes
-        python-pywal                    # autocolor firefox
 
         # Fonts
         # ttf-font-awesome
@@ -169,6 +167,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
 
     # AUR packages
     aur_packages=(
+        python-pywalfox                 # autocolor firefox
         vesktop-bin                     # messaging (https://github.com/refact0r/system24)
         # whatsapp-for-linux              # messaging
         qview                           # image viewer
@@ -251,43 +250,40 @@ fi
 read -n1 -rep 'Would you like to start your services? (y,n)' SRVC
 if [[ $SRVC == "Y" || $SRVC == "y" ]]; then
 
+    # docker
     sudo systemctl enable --now docker
 
+    # zsh
     if [[ "$SHELL" != "/bin/zsh" ]]; then
         echo -e "Changing default shell to zsh...\n"
         chsh -s /bin/zsh
     else
         echo -e "Default shell is already zsh. Skipping chsh...\n"
     fi
-    # Oh-my-zsh setup here
 
-
-    echo -e "Changing default browser to firefox...\n"
-    xdg-settings set default-web-browser firefox.desktop
-
-
+    # tmux
     echo -e "Tmux setup...\n"
     mkdir -p "$HOME/.tmux/plugins"
     if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
         git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
     fi
 
-
+    # Sound
     echo -e "Starting the Sound Services...\n"
-    # sudo systemctl enable --now pipewire pipewire-pulse wireplumber
     systemctl --user enable --now pipewire pipewire-pulse wireplumber
     sleep 2
 
-
+    # Bluetooth
     echo -e "Starting the Bluetooth Service...\n"
     sudo systemctl enable --now bluetooth.service
     sleep 2
 
-
+    # xdg
     echo -e "Cleaning out conflicting xdg portals...\n"
     sudo pacman -Rns --noconfirm --quiet xdg-desktop-portal-gnome xdg-desktop-portal-gtk 2>/dev/null
+    xdg-settings set default-web-browser firefox.desktop
 
-
+    # greetd
     echo -e "Enabling greeter...\n"
     sudo systemctl enable greetd
     sleep 2
@@ -296,17 +292,19 @@ if [[ $SRVC == "Y" || $SRVC == "y" ]]; then
         sudo passwd -d greeter
     fi
 
-
+    # keyd
     echo -e "Enabling keyd...\n"
     sudo systemctl enable --now keyd
     sleep 2
 
-
+    # Desktop
     echo -e "Updating desktop database...\n"
     update-desktop-database "$HOME/.local/share/applications/"
     sleep 2
 fi
 
 
-# ----- Script is done -----
 echo -e "Script had completed!!!\n"
+# ----- Resources -----
+# For temporary installs: https://www.reddit.com/r/archlinux/comments/27yq8u/comment/ci5p3zt
+# Discord update fix: https://www.reddit.com/r/linuxmasterrace/comments/10bq9qq/comment/j4bk0li
