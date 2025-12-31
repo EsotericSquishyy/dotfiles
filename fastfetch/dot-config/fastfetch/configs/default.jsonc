@@ -61,7 +61,11 @@
             "keyColor": "33", 
         },
         "break",
-        "colors",
+        {
+            "type": "colors",
+            "blockRangeStart": "9",
+            "blockWidth": "3",
+        },
         "break",
         "break",
     ]
