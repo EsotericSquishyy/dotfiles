@@ -9,6 +9,6 @@ Install (https://www.youtube.com/watch?v=68z11VAYMS8):
 8. `grub-install /dev/[device]` and `grub-mkconfig -o /boot/grub/grub.cfg`
 
 Post-Install:
-1. `sudo pacmand -S hyprland alacritty firefox`
+1. `sudo pacman -S hyprland alacritty firefox`
 2. Setup ssh-key for github and clone dotfiles
 3. `./install.sh`

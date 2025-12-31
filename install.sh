@@ -12,7 +12,7 @@ fi
 # ----- Package manager update -----
 read -n1 -rep 'Would you like to update packages? (y,n)' UPDT
 if [[ $UPDT == "Y" || $UPDT == "y" ]]; then
-    sudo pacman -Syu --noconfirm
+    sudo pacman -Syu --noconfirm # -Syy to force refresh
     yay -Syu --noconfirm
 fi
 
@@ -20,8 +20,7 @@ fi
 # ----- Install all of the above pacakges -----
 read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
-
-    # Pacman packages
+    # ALPM packages
     packages=(
         # # Installed pre-install
         # base
@@ -102,12 +101,12 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         which                           # binary locator
         tree                            # file tree
         wget                            # HTTP requests
-        stow                            # symlink farm
         tmux                            # terminal multiplexer
         fastfetch                       # fetch
         man-pages                       # man
         man-db                          # man
         less                            # pager
+        chezmoi                         # symlinks
 
         # General
         chromium                        # browser
@@ -160,10 +159,8 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         # noto-fonts
         noto-fonts-cjk
     )
-    # sudo pacman -Syu --noconfirm
     echo "${packages[@]}"
     sudo pacman -S --needed --noconfirm "${packages[@]}"
-
 
     # AUR packages
     aur_packages=(
@@ -176,7 +173,6 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         opencode-bin                    # opencode
         ttf-noto-emoji-monochrome       # emojis
     )
-    # yay -Syu --noconfirm
     yay -S --needed --noconfirm "${aur_packages[@]}"
 fi
 
@@ -189,6 +185,12 @@ if [[ $NXSU == "Y" || $NXSU == "y" ]]; then
     sudo usermod -aG nix-users squishyy
     nix-channel --add https://nixos.org/channels/nixpkgs-unstable
     nix-channel --update
+fi
+
+
+# ----- Chezmoi -----
+read -n1 -rep 'Would you like to update chezmoi? (y,n)' CZMI
+if [[ $CZMI == "Y" || $CZMI == "y" ]]; then
 fi
 
 
@@ -249,7 +251,6 @@ fi
 # ----- Services -----
 read -n1 -rep 'Would you like to start your services? (y,n)' SRVC
 if [[ $SRVC == "Y" || $SRVC == "y" ]]; then
-
     # docker
     sudo systemctl enable --now docker
 
