@@ -188,27 +188,6 @@ if [[ $NXSU == "Y" || $NXSU == "y" ]]; then
 fi
 
 
-# ----- Chezmoi -----
-read -n1 -rep 'Would you like to update chezmoi? (y,n)' CZMI
-if [[ $CZMI == "Y" || $CZMI == "y" ]]; then
-fi
-
-
-# ----- Copy Config Files -----
-read -n1 -rep 'Would you like to copy config files? (y,n)' CFG
-if [[ $CFG == "Y" || $CFG == "y" ]]; then
-    echo -e "Copying config files...\n"
-    sudo stow --dotfiles -t "$HOME" bin hypr nvim tmux waybar zsh alacritty starship wlogout vesktop yazi fastfetch rofi
-    sudo stow --dotfiles -t "/" greetd keyd
-
-    if command -v firefox >/dev/null 2>&1; then
-        mkdir -p "$HOME/.mozilla/firefox/squishyy-profile/"
-        sudo stow --dotfiles -t "$HOME" firefox
-    fi
-fi
-
-
-
 # ----- Pywal -----
 read -n1 -rep 'Would you like to update pywal cache? (y,n)' PYW
 if [[ $PYW == "Y" || $PYW == "y" ]]; then
@@ -301,7 +280,6 @@ if [[ $SRVC == "Y" || $SRVC == "y" ]]; then
     # Desktop
     echo -e "Updating desktop database...\n"
     update-desktop-database "$HOME/.local/share/applications/"
-    sleep 2
 fi
 
 

@@ -7,3 +7,4 @@
 - notifications
 - color for vesktop
 - dynamic color for tmux
+- use chezmoi on /etc/
