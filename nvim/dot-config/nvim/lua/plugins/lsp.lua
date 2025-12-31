@@ -15,10 +15,6 @@ return {
         "rust_analyzer", -- rust
       },
     },
-  },
-
-  {
-    "neovim/nvim-lspconfig",
     config = function()
       -- vim.lsp.config("*", {})
       vim.lsp.enable({
@@ -43,7 +39,6 @@ return {
       vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end)
     end,
   },
-
   {
     'saghen/blink.cmp',
     dependencies = {

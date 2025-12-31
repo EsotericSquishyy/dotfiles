@@ -137,6 +137,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         python-uv                       # python package manager
         nix                             # nix (`extra-experimental-features = nix-command flakes` to /etc/nix/nix.conf)
         docker                          # docker
+        docker-buildx                   # docker buildx
         docker-compose                  # docker compose
         gnu-netcat                      # nc
         fastfetch                       # fetch
@@ -146,6 +147,9 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         qbittorrent-nox                 # Bit torrent
         termshark                       # Wireshark
         ollama                          # LLMs
+        gef                             # gdb fork
+        ghidra
+        radare2
 
         # Pywal
         python-pywal                    # colorschemes
@@ -155,6 +159,8 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         # ttf-font-awesome
         # powerline-fonts
         nerd-fonts
+        # noto-fonts
+        noto-fonts-cjk
     )
     # sudo pacman -Syu --noconfirm
     echo "${packages[@]}"
@@ -169,6 +175,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         lean4-bin                       # lean
         wlogout                         # logout manager
         opencode-bin                    # opencode
+        ttf-noto-emoji-monochrome       # emojis
     )
     # yay -Syu --noconfirm
     yay -S --needed --noconfirm "${aur_packages[@]}"
