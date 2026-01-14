@@ -1,5 +1,4 @@
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
-vim.keymap.set("n", "-", "<cmd>Oil<CR>")
 
 return {
   {
@@ -65,6 +64,10 @@ return {
     'stevearc/oil.nvim',
     opts = {},
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    config = function()
+      require("oil").setup()
+      vim.keymap.set("n", "-", "<cmd>Oil<CR>")
+    end
   },
 
   {
