@@ -1,6 +1,6 @@
 /**
  * @name system24
- * @description a tui-like discord theme.
+ * @description a tui-style discord theme.
  * @author refact0r
  * @version 2.0.0
  * @invite nz87hXyvcy
@@ -15,8 +15,8 @@
 
 body {
     /* font, change to '' for default discord font */
-    --font: 'Mononoki Nerd Font Mono'; /* change to '' for default discord font */
-    --code-font: 'Mononoki Nerd Font Mono'; /* change to '' for default discord font */
+    --font: 'DM Mono'; /* change to '' for default discord font */
+    --code-font: 'DM Mono'; /* change to '' for default discord font */
     font-weight: 300; /* text font weight. 300 is light, 400 is normal. DOES NOT AFFECT BOLD TEXT */
     letter-spacing: -0.05ch; /* decreases letter spacing for better readability. recommended on monospace fonts.*/
 
@@ -45,7 +45,7 @@ body {
     --custom-dms-icon: off; /* off: use default discord icon, hide: remove icon entirely, custom: use custom icon */
     --dms-icon-svg-url: url(''); /* icon svg url. MUST BE A SVG. */
     --dms-icon-svg-size: 90%; /* size of the svg (css mask-size property) */
-    --dms-icon-color-before: var(--icon-secondary); /* normal icon color */
+    --dms-icon-color-before: var(--icon-subtle); /* normal icon color */
     --dms-icon-color-after: var(--white); /* icon color when button is hovered/selected */
     --custom-dms-background: off; /* off to disable, image to use a background image (must set url variable below), color to use a custom color/gradient */
     --dms-background-image-url: url(''); /* url of the background image */
