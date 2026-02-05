@@ -170,7 +170,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         qview                           # image viewer
         lean4-bin                       # lean
         wlogout                         # logout manager
-        opencode-bin                    # opencode
+        # opencode-bin                    # opencode
         ttf-noto-emoji-monochrome       # emojis
     )
     yay -S --needed --noconfirm "${aur_packages[@]}"

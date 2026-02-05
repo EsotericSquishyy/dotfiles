@@ -9,7 +9,7 @@ return {
       ensure_installed = {
         "lua_ls",        -- lua
         "pyright",       -- python
-        -- "basedpyright",  -- typed python
+        "basedpyright",  -- typed python
         "tinymist",      -- typst
         "clangd",        -- c, c++
         "rust_analyzer", -- rust
@@ -19,8 +19,8 @@ return {
       -- vim.lsp.config("*", {})
       vim.lsp.enable({
         "lua_ls",
-        "pyright",
-        -- "basedpyright",
+        -- "pyright",
+        "basedpyright",
         "tinymist",
         "clangd",
         "rust_analyzer",
