@@ -35,6 +35,10 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         # openssh
         # networkmanager
 
+        # # kernel compiling
+        # base-devel git bc flex bison libelf ncurses xz zlib
+        # linux-headers
+
         # Fundamentals
         firefox                         # browser (https://github.com/adriankarlen/textfox#)
         hyprland                        # Wayland compositor

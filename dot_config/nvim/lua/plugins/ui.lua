@@ -7,19 +7,6 @@ return {
     end
   },
 
-  -- Cursor smearing
-  {
-    "sphamba/smear-cursor.nvim",
-    opts = {
-      -- https://github.com/sphamba/smear-cursor.nvim/blob/main/lua/smear_cursor/config.lua
-      smear_to_cmd = true,
-
-      stiffness = 0.8, -- 0 (slow) - 1 (fast)
-      trailing_stiffness = 0.5,
-      distance_stop_animating = 0.5,
-    },
-  },
-
   {
     -- Using snacks instead
     "goolord/alpha-nvim",
