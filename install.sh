@@ -111,6 +111,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         man-db                          # man
         less                            # pager
         chezmoi                         # symlinks
+        git-delta                       # diff pager
 
         # General
         chromium                        # browser
