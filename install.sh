@@ -64,7 +64,7 @@ if [[ $INST == "Y" || $INST == "y" ]]; then
         qt5-wayland                     # qt
         qt6-wayland                     # qt
         xdg-utils                       # extra utils
-        swww                            # wallpaper daemon
+        awww                            # wallpaper daemon
         waybar                          # status bar
         alsa-utils                      # sound
         brightnessctl                   # brightness
