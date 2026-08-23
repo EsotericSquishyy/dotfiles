@@ -9,9 +9,9 @@ eval "$(starship init zsh)"
 
 eval "$(zoxide init zsh --cmd cd)"
 
-alias ls='eza --icons'
-alias ll='eza -l --icons'
-alias la='eza -la --icons'
+alias ls='eza --icons auto'
+alias ll='eza -l --icons auto'
+alias la='eza -la --icons auto'
 
 source <(fzf --zsh)
 
