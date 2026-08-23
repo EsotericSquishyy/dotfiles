@@ -23,6 +23,7 @@ hl.monitor({
 -- ===== Permissions =====
 hl.config({ ecosystem = { enforce_permissions = true } })
 hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
+hl.permission("/usr/(bin|local/bin)/wlogout", "screencopy", "allow")
 hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 
 
@@ -34,11 +35,10 @@ local wallpaperPath = configDir .. "wallpapers/explosion_atelier_forest.png"
 local brightDown    = "brightnessctl -q s 5%-"
 local brightUp      = "brightnessctl -q s 5%+"
 local browser       = "firefox"
-local exitMenu      = "wlogout --protocol layer-shell -b 4"
-local fileManager   = "thunar"
+local exitMenu      = "pkill wlogout || wlogout --protocol layer-shell -b 4"
 local mainMod       = "SUPER"
 local menu          = "pkill rofi || rofi -show drun"
-local menuactive    = "rofi -show window"
+local menuactive    = "pkill rofi || rofi -show window"
 local restartWaybar = "pkill waybar && waybar"
 local terminal      = "alacritty"
 local volDown       = "amixer -q sset Master 5%-"
@@ -151,8 +151,7 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 6, bezier = "default
 -- ===== Basic binds =====
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(exitMenu))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(exitMenu))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(menuactive))
@@ -191,12 +190,8 @@ hl.bind(mainMod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
 
 -- Move/resize windows (272 LMB, 273 RMB, 274 MMB)
-hl.bind(mainMod .. " + mouse:272",         hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. " + mouse:272",         hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + SHIFT + mouse:272", hl.dsp.window.resize(), { mouse = true })
-hl.bind(mainMod .. " + ALT + H", hl.dsp.window.resize({ x = -30, y = 0 }), { repeating = true })
-hl.bind(mainMod .. " + ALT + L", hl.dsp.window.resize({ x = 30, y = 0 }),  { repeating = true })
-hl.bind(mainMod .. " + ALT + J", hl.dsp.window.resize({ x = 0, y = 30 }),  { repeating = true })
-hl.bind(mainMod .. " + ALT + K", hl.dsp.window.resize({ x = 0, y = -30 }), { repeating = true })
 
 
 -- ===== Screenshot =====
