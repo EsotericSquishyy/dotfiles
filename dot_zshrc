@@ -1,0 +1,58 @@
+# ----- Variables -----
+export EDITOR='nvim'
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+bindkey -e # Disables vi binds
+
+
+# ----- Helpers Init -----
+eval "$(starship init zsh)"
+
+eval "$(zoxide init zsh --cmd cd)"
+
+alias ls='eza --icons'
+alias ll='eza -l --icons'
+alias la='eza -la --icons'
+
+source <(fzf --zsh)
+
+
+
+# ----- History -----
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt SHARE_HISTORY
+
+
+
+# ----- Completion/Correction -----
+if [[ -r /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+    source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# if [[ -r /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh ]]; then
+#     source /usr/share/zsh/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+# fi
+
+
+
+
+# ----- Custom Functions -----
+if [ -d "$HOME/.zsh/functions" ]; then
+    fpath=($HOME/.zsh/functions $fpath)
+    autoload -U $HOME/.zsh/functions/*(:t)
+fi
+
+
+
+
+# ----- Pywal -----
+(cat ~/.cache/wal/sequences &)
+source ~/.cache/wal/colors-tty.sh
+
+
+
+# ----- Reload config ------
+alias reload='source ~/.zshrc'

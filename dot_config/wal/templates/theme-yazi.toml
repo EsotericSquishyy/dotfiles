@@ -1,0 +1,157 @@
+## Color palette
+# foreground {foreground}
+# background {background}
+# color0     {color0}
+# color1     {color1}
+# color2     {color2}
+# color3     {color3}
+# color4     {color4}
+# color5     {color5}
+# color6     {color6}
+# color7     {color7}
+# color8     {color8}
+# color9     {color9}
+# color10    {color10}
+# color11    {color11}
+# color12    {color12}
+# color13    {color13}
+# color14    {color14}
+# color15    {color15}
+
+
+[mgr]
+marker_copied = {{ fg = "{color2}", bg = "{color2}" }}
+marker_cut = {{ fg = "{color1}", bg = "{color1}" }}
+marker_marked = {{ fg = "{color4}", bg = "{color4}" }}
+marker_selected = {{ fg = "{color7}", bg = "{color7}" }}
+
+cwd = {{ fg = "{color1}" }}
+hovered = {{ reversed = true }}
+preview_hovered = {{ reversed = true }}
+
+find_keyword = {{ fg = "{color7}", bg = "{background}" }}
+find_position = {{}}
+
+tab_active = {{ reversed = true }}
+tab_inactive = {{}}
+tab_width = 1
+
+count_copied = {{ fg = "{background}", bg = "{color2}" }}
+count_cut = {{ fg = "{background}", bg = "{color3}" }}
+count_selected = {{ fg = "{background}", bg = "{color1}" }}
+
+border_symbol = "│"
+border_style = {{ fg = "{color4}" }}
+
+
+[tabs]
+active = {{ fg = "{color4}", bg = "reset" }}
+inactive = {{ fg = "{background}", bg = "{color4}" }}
+sep_inner = {{ open = "", close = "" }}
+sep_outer = {{ open = "", close = "" }}
+
+
+[mode]
+normal_main = {{ fg = "{background}", bg = "{color4}" }}
+normal_alt = {{ fg = "{color4}", bg = "{background}" }}
+select_main = {{ fg = "{background}", bg = "{color2}" }}
+select_alt = {{ fg = "{color2}", bg = "{background}" }}
+unset_main = {{ fg = "{background}", bg = "{color1}" }}
+unset_alt = {{ fg = "{color1}", bg = "{background}" }}
+
+
+[status]
+overall = {{ fg = "{color1}", bg = "{background}" }}
+sep_left = {{ open = "", close = "" }}
+sep_right = {{ open = "", close = "" }}
+
+perm_type = {{ fg = "{color6}" }}
+perm_read = {{ fg = "{color1}" }}
+perm_write = {{ fg = "{color7}" }}
+perm_exec = {{ fg = "{color2}" }}
+perm_sep = {{ fg = "{color5}" }}
+
+progress_label = {{ fg = "{color4}", bg = "{background}", bold = true }}
+progress_normal = {{ fg = "{color2}", bg = "{background}" }}
+progress_error = {{ fg = "{color1}", bg = "{background}" }}
+
+
+[which]
+cols = 2
+separator = " - "
+separator_style = {{ fg = "{background}" }}
+mask = {{ bg = "{background}" }}
+rest = {{ fg = "{background}" }}
+cand = {{ fg = "{color4}" }}
+desc = {{ fg = "{background}" }}
+
+
+[confirm]
+
+
+[spot]
+
+
+[notify]
+title_info = {{ fg = "{color2}" }}
+title_warn = {{ fg = "{color7}" }}
+title_error = {{ fg = "{color1}" }}
+
+
+[pick]
+border = {{ fg = "{color4}" }}
+active = {{ fg = "{color4}", bold = true }}
+inactive = {{}}
+
+
+[input]
+border = {{ fg = "{color1}" }}
+title = {{}}
+value = {{}}
+selected = {{ reversed = true }}
+
+
+[cmp]
+border = {{ fg = "{color4}" }}
+active = {{ reversed = true }}
+inactive = {{}}
+
+
+[tasks]
+border = {{ fg = "{color2}" }}
+title = {{}}
+hovered = {{ fg = "{color2}" }}
+
+
+[help]
+on = {{ fg = "{color5}" }}
+run = {{ fg = "{color6}" }}
+desc = {{}}
+hovered = {{ reversed = true, bold = true }}
+footer = {{ fg = "{background}", bg = "{color1}" }}
+
+
+[filetype]
+rules = [
+    # images
+    {{ mime = "image/*", fg = "{color7}" }},
+
+    # media
+    {{ mime = "{{audio,video}}/*", fg = "{color5}" }},
+
+    # archives
+    {{ mime = "application/{{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}}", fg = "{color3}" }},
+
+    # documents
+    {{ mime = "application/{{pdf,doc,rtf,vnd.*}}", fg = "{color2}" }},
+
+    # broken links
+    {{ name = "*", is = "orphan", fg = "{color1}" }},
+
+    # executables
+    {{ name = "*", is = "exec", fg = "{color2}" }},
+
+    # fallback
+    {{ name = "*", fg = "{foreground}" }},
+    {{ name = "*/", fg = "{color4}" }},
+]

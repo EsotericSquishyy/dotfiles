@@ -1,0 +1,21 @@
+[mgr]
+show_hidden = true
+show_symlink = true
+
+[opener]
+edit = [
+    { run = 'nvim "$@"', block = true },
+]
+
+play = [
+    { run = 'mpv "$@"', orphan = true, for = "unix" },
+]
+open = [
+    { run = 'xdg-open "$@"', desc = "Open" },
+]
+
+[[plugin.prepend_fetchers]]
+id   = "mime"
+name = "*"
+run  = "mime-ext"
+prio = "high"

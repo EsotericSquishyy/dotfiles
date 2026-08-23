@@ -1,0 +1,28 @@
+[user]
+name = EsotericSquishyy
+email = jesselcobb@gmail.com
+
+[core]
+pager = delta
+
+[interactive]
+diffFilter = delta --color-only
+
+[delta]
+side-by-side = true
+line-numbers = true
+navigate = true
+light = false
+
+[merge]
+conflictstyle = zdiff3
+
+[diff]
+colorMoved = default
+
+[color]
+ui = auto
+
+[alias]
+diff1 = -c delta.side-by-side=false diff
+show1 = -c delta.side-by-side=false show

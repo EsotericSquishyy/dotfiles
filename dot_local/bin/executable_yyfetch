@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+fastfetch -c "$HOME/.config/fastfetch/configs/default.jsonc"

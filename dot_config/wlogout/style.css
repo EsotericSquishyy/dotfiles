@@ -1,0 +1,53 @@
+@import url('colors.css');
+
+*{
+    font-family: Mononoki Nerd Font;
+    font-style: normal;
+    font-size: 40px;
+    font-weight: bold;
+}
+window {
+    background-color: @background-alpha;
+} 
+
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    background-color: transparent;
+    transition: all 0.3s ease-in;
+    border-radius: 36px;
+    padding-bottom: 300px;
+    margin: 10px;
+    color: @base01;
+    text-shadow: none;
+    box-shadow: none;
+    border: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    background-size: 50%;
+    outline-style: none;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,.4);
+    background-color: @base01;
+    color: transparent;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+}
+
+/* ===== Buttons ===== */
+#shutdown       { background-image: image(url("./icons/power-fg.svg")); }
+#shutdown:hover { background-image: image(url("./icons/power-bg.svg")); }
+
+#reboot         { background-image: image(url("./icons/reboot-fg.svg")); }
+#reboot:hover   { background-image: image(url("./icons/reboot-bg.svg")); }
+
+#sleep          { background-image: image(url("./icons/sleep-fg.svg")); }
+#sleep:hover    { background-image: image(url("./icons/sleep-bg.svg")); }
+
+#logout         { background-image: image(url("./icons/logout-fg.svg")); }
+#logout:hover   { background-image: image(url("./icons/logout-bg.svg")); }
+

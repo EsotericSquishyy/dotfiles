@@ -1,0 +1,92 @@
+return {
+  -- Tab styling
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end
+  },
+
+  {
+    -- Using snacks instead
+    "goolord/alpha-nvim",
+    dependencies = { 'echasnovski/mini.icons' },
+    config = function()
+      -- dashboard.file_icons.provider = "mini"
+      require("plugins.configs.alpha")
+      -- require("alpha").setup(require("alpha.themes.dashboard").config)
+    end,
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    config = function()
+      vim.notify = require('notify')
+      require('notify').setup{
+        background_colour = "#000000"
+      }
+    end
+  },
+
+  -- {
+  --   "RRethy/base16-nvim",
+  --   config = function()
+  --     vim.cmd.colorscheme "base16-atelier-forest"
+  --   end
+  -- },
+  {
+    'uZer/pywal16.nvim',
+    config = function()
+      vim.cmd.colorscheme("pywal16")
+    end,
+  },
+
+  {
+    "xiyaowong/transparent.nvim",
+    enabled = true,
+    config = function()
+      require("transparent").setup {
+        groups = {
+          'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
+          'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
+          'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'NonText',
+          'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
+          'EndOfBuffer',
+          'TabLine', 'TabLineFill', 'TabLineSel',
+        },
+        extra_groups = {},
+        exclude_groups = {},
+        on_clear = function() end,
+      }
+      -- :TransparentEnable
+    end,
+  },
+
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { "echasnovski/mini.icons" },
+    config = function()
+      -- For base16 colorscheme
+      -- local base16 = require('lualine.themes.base16')
+      -- base16.normal.c.bg = 'none' -- removes main background
+
+      require('lualine').setup{
+        options = {
+          -- theme = base16,
+          theme = "pywal16-nvim",
+          globalstatus = true,
+          always_show_tabline = true,
+        },
+        tabline = {
+          lualine_a = {
+            {
+              'tabs',
+              mode = 1,
+              max_length = vim.o.columns,
+            }
+          },
+        },
+      }
+    end
+  }
+}
