@@ -31,6 +31,8 @@ vim.keymap.set("n", "<C-S-H>", ":wincmd H<CR>", { silent = true })
 vim.keymap.set("n", "<C-S-J>", ":wincmd J<CR>", { silent = true })
 vim.keymap.set("n", "<C-S-K>", ":wincmd K<CR>", { silent = true })
 vim.keymap.set("n", "<C-S-L>", ":wincmd L<CR>", { silent = true })
+vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv")
+vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv")
 
 -- Quickfix list
 vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>")

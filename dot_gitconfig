@@ -11,7 +11,6 @@ diffFilter = delta --color-only
 [delta]
 side-by-side = true
 line-numbers = true
-syntax-theme = Dracula
 navigate = true
 light = false
 
@@ -23,3 +22,7 @@ colorMoved = default
 
 [color]
 ui = auto
+
+[alias]
+diff1 = -c delta.side-by-side=false diff
+show1 = -c delta.side-by-side=false show

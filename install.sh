@@ -207,6 +207,7 @@ if [[ $PYW == "Y" || $PYW == "y" ]]; then
 
     # Hyprland and Hyprlock
     ln -s $HOME/.cache/wal/colors-hyprland.conf $HOME/.config/hypr/colors.conf
+    ln -s $HOME/.cache/wal/colors-hyprland.lua $HOME/.config/hypr/colors.lua
 
     # Wlogout
     ln -s $HOME/.cache/wal/colors-wlogout.css $HOME/.config/wlogout/colors.css
